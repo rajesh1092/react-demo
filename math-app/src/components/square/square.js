@@ -3,24 +3,22 @@ import classes from "../component.module.css";
 
 const Square = (props) => {
   const [squr, setSqur] = useState(null);
-
-  // useEffect(()=>{
-  //   setSqur(props.value);
-  // },[props.value]);
-  const squNum = (num) =>{
-   return num *= num;
-  };
+  
 
   useEffect(()=>{
-      setSqur(squNum(props.value));   
+    const squNum = (num) =>{
+      return num *= num;
+     }
+      setSqur(squNum(props.value));
+         
   }, [props.value]);
-    
+  props.squrData(squr);
 
   return (
     <div className={classes.Input}>
       <label>Enter Number:</label>
       {props.print && (
-        <label type="text" style={{ margin: "20px", border: "solid" }}>
+        <label  type="text" style={{ margin: "20px", border: "solid" }}>
           {squr}
         </label>
       )}

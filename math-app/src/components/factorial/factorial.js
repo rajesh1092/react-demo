@@ -4,17 +4,19 @@ import classes from "../component.module.css";
 const Factorial = (props) => {
   const [fact, setFact] = useState(null);
 
-  const factorialize = (num) => {
-    if (num < 0) return -1;
-    else if (num === 0) return 1;
-    else {
-       return num * factorialize(num - 1);
-    } 
-  };
+  
 
   useEffect(()=> {
+    const factorialize = (num) => {
+      if (num < 0) return -1;
+      else if (num === 0) return 1;
+      else {
+         return num * factorialize(num - 1);
+      } 
+    }
     setFact(factorialize(props.value));
   }, [props.value]);
+  props.factData(fact);
    
     
 
